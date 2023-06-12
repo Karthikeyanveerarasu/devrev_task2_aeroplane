@@ -1,1 +1,12 @@
 it is project done using express js and react js and MYSQL is used as a database.
+
+<!-- IMPORTANT -->
+ADMIN EMAIL - devrev@gmail.com
+ADMIN PASSWORD - devrev
+
+<!-- NOTE-- >
+admin are given statically but all other are dynamic such as flght booking,user login, otp authentication..
+
+NODEMAILER is used as otp sender so, please ensure internet connectivity...
+
+
