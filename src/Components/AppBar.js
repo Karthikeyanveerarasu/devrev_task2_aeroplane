@@ -3,8 +3,33 @@ import "./Login.css";
 import { useNavigate } from "react-router-dom";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+
 function AppBar() {
   const navigate = useNavigate();
+  function Logout(){
+    axios.post('http://localhost:3002/logout')
+      .then((response) => {
+        // Redirect to the login page
+       if(response.data.Loggedin == false){
+        toast.info("Logging out!", {
+          position: "top-right",
+          autoClose: 2000,
+          hideProgressBar: false,
+          closeOnClick: true,
+          pauseOnHover: true,
+          draggable: true,
+          progress: undefined,
+          theme: "colored"
+        });
+        setTimeout(() => {
+          navigate("/");
+        }, 2000);
+       }
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  }
   return (
     <div class="">
       <ToastContainer />
@@ -30,21 +55,7 @@ function AppBar() {
                 Contact us
               </Nav.Link>
               <Nav.Link
-                onClick={() => {
-                  toast.info("Logging out!", {
-                    position: "top-right",
-                    autoClose: 2000,
-                    hideProgressBar: false,
-                    closeOnClick: true,
-                    pauseOnHover: true,
-                    draggable: true,
-                    progress: undefined,
-                    theme: "colored"
-                  });
-                  setTimeout(() => {
-                    navigate("/");
-                  }, 2000);
-                }}
+                onClick={logout}
               >
                 Logout
               </Nav.Link>
