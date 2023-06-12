@@ -88,6 +88,17 @@ app.post('/register',(req,res)=>{
               })
             }) 
 })
+////logout function ///
+app.post('/logout', function(req, res) {
+  console.log("Logging out ....")
+  req.session.destroy(function(err,result) {
+    if (err) {
+      console.log(err);
+    } else {
+      res.send({Loggedin:false})
+    }
+  });
+});
 app.get('/login',(req,res)=>{
   if(req.session.user){
     res.send({Loggedin : true})
